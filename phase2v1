@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibola Insight Partners - Phase 2 Analysis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Merriweather', serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .page {
+            background-color: white;
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Logo */
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .confidential-stamp {
+            font-family: 'Inter', sans-serif;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 5px 10px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(-2deg);
+        }
+
+        /* Memo Meta Data */
+        .memo-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2c3e50;
+            padding-left: 15px;
+        }
+
+        .meta-row {
+            margin-bottom: 6px;
+        }
+
+        .meta-label {
+            font-weight: 700;
+            color: #7f8c8d;
+            width: 80px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        /* Content Styles */
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: #ecf0f1;
+            padding: 8px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e67e22; /* Crisis Orange */
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .summary-box {
+            background-color: #fff8f0;
+            border: 1px solid #fae5d3;
+            padding: 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .insight-box {
+            border-left: 3px solid #8e44ad;
+            background-color: #f4ecf7;
+            padding: 10px;
+            margin: 15px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #5b2c6f;
+        }
+
+        /* Analysis Blocks */
+        .team-analysis {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .team-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .pivot-tag {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .quote-style {
+            font-style: italic;
+            color: #555;
+            border-left: 2px solid #bdc3c7;
+            padding-left: 10px;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 0.75in;
+            right: 0.75in;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" rx="10" fill="#2C3E50"/>
+                    <path d="M25 75V50" stroke="#E67E22" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 75V35" stroke="#ECF0F1" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M75 75V25" stroke="#3498DB" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="75" cy="25" r="5" fill="#E67E22"/>
+                </svg>
+                <div class="logo-text">CIBOLA<br>INSIGHT<br>PARTNERS</div>
+            </div>
+            <div class="confidential-stamp">EYES ONLY // SENIOR STAFF</div>
+        </div>
+
+        <div class="memo-meta">
+            <div class="meta-row"><span class="meta-label">TO:</span> All Senior Strategy Teams</div>
+            <div class="meta-row"><span class="meta-label">FROM:</span> Cibola Board of Elections (Simulation Control)</div>
+            <div class="meta-row"><span class="meta-label">DATE:</span> August 15, 2028</div>
+            <div class="meta-row"><span class="meta-label">SUBJECT:</span> <strong>PHASE 2 ANALYSIS: THE GOVERNANCE TEST</strong></div>
+        </div>
+
+        <div class="summary-box">
+            <strong>EXECUTIVE SUMMARY:</strong> The "Governance Test" has fundamentally reshaped the race. The candidates who attempted to run "Political Ads" during the blackout have been punished by the electorate. The winners of this round were those who abandoned traditional campaigning entirely and pivoted to aggressive, tangible <strong>innovation</strong> and <strong>service</strong>.
+        </div>
+
+        <h3>The Pivot: From "Running" to "Leading"</h3>
+        <p>Phase 2 confirmed that in a crisis of this magnitude, "Business as Usual" is a death sentence. The electorate demanded radical solutions, and three campaigns specifically rose to the challenge by leveraging the crisis to redefine their brands.</p>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM STRONGBOW <span class="pivot-tag">High Innovation</span></div>
+            <p><strong>The "Cool New Deal" Pivot:</strong></p>
+            <p>Team Strongbow executed the most dramatic strategic shift of the simulation. Moving away from abstract "Deep Time" philosophy, they weaponized the crisis by identifying a clear villain: <strong>The Data Centers.</strong></p>
+            <p>Instead of just offering sympathy, they offered a transaction: <em>"We will tax the billionaires to pay your cooling bill."</em> By launching the "Cool New Deal," they successfully connected the abstract threat of AI resource hoarding with the immediate pain of the voter.</p>
+            <div class="quote-style">"Press releases are not going to solve this. Shutting down data centers will."</div>
+            <div class="insight-box"><strong>KEY LESSON:</strong> Anger is a resource. Strongbow didn't just provide relief; she provided a target for the public's rage.</div>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM VEGA <span class="pivot-tag">High Adaptability</span></div>
+            <p><strong>The "Leadership in Action" Pivot:</strong></p>
+            <p>Team Vega leveraged the incumbent advantage not by governing from the top, but by deploying to the front lines. Their strategy was visual and visceral: showing the candidate physically working in cooling centers alongside constituents.</p>
+            <p>Their "Anti-Ad" approach—using rapid-response video reactions to debunk misinformation and coordinate water logistics—positioned Vega as the "Adult in the Room." While others debated policy, Vega was seen delivering survival.</p>
+            <div class="quote-style">"When the system fails, some people talk. Marisol Vega works. That's the difference."</div>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM SPENCE <span class="pivot-tag">Radical Disruption</span></div>
+            <p><strong>The "UBI" Pivot:</strong></p>
+            <p>Team Spence correctly identified that the heat crisis is also an economic crisis. By pivoting to a "Universal Basic Income" (UBI) platform funded by taxing the tech giants, they bypassed the "culture war" and went straight to the voters' wallets.</p>
+            <p>Their tactical innovation—the "Pod Program" and paying micro-influencers to generate content—turns the electorate into a paid workforce. This gamification of the protest movement creates a self-sustaining engine of outrage and support.</p>
+            <div class="quote-style">"We aren't just campaigning for Caleb. We are campaigning for the solution: Economic Dignity."</div>
+        </div>
+
+        <h3>Strategic Conclusion for Phase 3</h3>
+        <p>The gap between the top tier and the bottom tier is widening. The campaigns that are "tinkering on the margins" with standard policy papers are fading into the background noise.</p>
+        <p><strong>The Mandate for Phase 3:</strong> As we enter the "Data Blackout," you cannot rely on the tools that failed you in Phase 2. You must continue to innovate. The electorate has tasted "Big Ideas"—they will not go back to small ones.</p>
+
+        <div class="footer">
+            CIBOLA INSIGHT PARTNERS | 404 IRONWOOD AVE, SUITE 200, IRONWOOD, CB 99201 | CONFIDENTIAL CLIENT DATA DO NOT DISTRIBUTE
+        </div>
+    </div>
+
+</body>
+</html>
