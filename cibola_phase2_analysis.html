@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibola Insight Partners - Phase 2 Analysis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Merriweather', serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .page {
+            background-color: white;
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Logo */
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .confidential-stamp {
+            font-family: 'Inter', sans-serif;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 5px 10px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(-2deg);
+        }
+
+        /* Memo Meta Data */
+        .memo-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2c3e50;
+            padding-left: 15px;
+        }
+
+        .meta-row {
+            margin-bottom: 6px;
+        }
+
+        .meta-label {
+            font-weight: 700;
+            color: #7f8c8d;
+            width: 80px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        /* Content Styles */
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: #ecf0f1;
+            padding: 8px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e67e22; /* Crisis Orange */
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .summary-box {
+            background-color: #fff8f0;
+            border: 1px solid #fae5d3;
+            padding: 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Analysis Blocks */
+        .team-analysis {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .team-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .pivot-tag {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .rank-col { width: 8%; font-weight: bold; text-align: center;}
+        .score-col { width: 12%; text-align: center; font-weight: bold; }
+        .status-col { width: 25%; font-weight: 600; color: #5b2c6f; }
+        
+        /* Bar Charts */
+        .bar-container {
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            height: 18px;
+            width: 100%;
+            margin-top: 4px;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 5px;
+            color: white;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .bar-fill.innovation { background-color: #9b59b6; }
+        .bar-fill.adaptability { background-color: #2ecc71; }
+        .bar-fill.impact { background-color: #e67e22; }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 0.75in;
+            right: 0.75in;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: ANALYSIS -->
+    <div class="page">
+        <div class="header">
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" rx="10" fill="#2C3E50"/>
+                    <path d="M25 75V50" stroke="#E67E22" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 75V35" stroke="#ECF0F1" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M75 75V25" stroke="#3498DB" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="75" cy="25" r="5" fill="#E67E22"/>
+                </svg>
+                <div class="logo-text">CIBOLA<br>INSIGHT<br>PARTNERS</div>
+            </div>
+            <div class="confidential-stamp">EYES ONLY // SENIOR STAFF</div>
+        </div>
+
+        <div class="memo-meta">
+            <div class="meta-row"><span class="meta-label">TO:</span> All Senior Strategy Teams</div>
+            <div class="meta-row"><span class="meta-label">FROM:</span> Cibola Board of Elections (Simulation Control)</div>
+            <div class="meta-row"><span class="meta-label">DATE:</span> August 15, 2028</div>
+            <div class="meta-row"><span class="meta-label">SUBJECT:</span> <strong>PHASE 2 ANALYSIS: CRISIS PHASE 2</strong></div>
+        </div>
+
+        <div class="summary-box">
+            <strong>EXECUTIVE SUMMARY:</strong> "Crisis Phase 2" reshaped the field. Candidates who attempted traditional political ads were punished. Winners abandoned campaigning for aggressive service and Big Ideas. Team Strongbow executed a dominant pivot with the "Cool New Deal," while Team Vega capitalized on stability to take the overall lead.
+        </div>
+
+        <h3>The Pivot: Leading Through Crisis</h3>
+        
+        <div class="team-analysis">
+            <div class="team-name">TEAM STRONGBOW <span class="pivot-tag">Phase Winner</span></div>
+            <p><strong>The "Cool New Deal" Pivot:</strong> In Phase 1, this team struggled with abstraction. In Phase 2, they introduced a concrete, radical framework. They identified a specific villain (data centers) and offered a specific <strong>Solution</strong>: shutting them down to cool the grid. This wasn't a policy paper; it was a mobilization order. The sheer scale of the idea drove their Innovation score to a field-leading 2.8.</p>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM VEGA <span class="pivot-tag">New Overall Leader</span></div>
+            <p><strong>The "Action" Pivot:</strong> Vega leveraged the power of incumbency by becoming the "First Responder." By suspending the campaign to physically hand out water and manage cooling centers, they maintained high scores in Adaptability (2.6) and Impact (2.5). They avoided the "out of touch" penalty that hurt others.</p>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM SPENCE <span class="pivot-tag">Effective Disruption</span></div>
+            <p><strong>The "UBI" Pivot:</strong> Spence successfully reframed the heat crisis as an economic crisis. The introduction of Universal Basic Income (UBI) signs and messaging at protests provided a tangible "receipt" for voters angry at the system. This generated consistent scores across the board.</p>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM KINCAID</div>
+            <p><strong>The Stumble:</strong> Kincaid dropped in the rankings because their response felt too close to "Business as Usual." While their innovation score was decent, they failed to offer a "Big Bet" comparable to Strongbow's "Cool New Deal" or Spence's "UBI." In a crisis, incrementalism is invisible.</p>
+        </div>
+
+        <div class="team-analysis">
+            <div class="team-name">TEAM THORNE</div>
+            <p><strong>The Collapse:</strong> Thorne dropped to last place. The campaign failed to read the room, sticking to a long-term "Build" narrative when the electorate demanded immediate relief. Their low Innovation (1.8) score reflects a failure to break the 2024 playbook.</p>
+        </div>
+
+        <p style="margin-top: 20px; font-style: italic; border-left: 3px solid #e74c3c; padding-left: 10px;">
+            <strong>MANDATE FOR PHASE 3:</strong> As we enter the "Data Blackout," the gap is widening. You cannot rely on the digital tools that failed you in Phase 2. The electorate has tasted "Big Ideas"—they will not go back to small ones.
+        </p>
+
+        <div class="footer">
+            Page 1 of 2 | CIBOLA INSIGHT PARTNERS
+        </div>
+    </div>
+
+    <!-- PAGE 2: DATA VISUALIZATION -->
+    <div class="page">
+        <div class="header">
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" rx="10" fill="#2C3E50"/>
+                    <path d="M25 75V50" stroke="#E67E22" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 75V35" stroke="#ECF0F1" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M75 75V25" stroke="#3498DB" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="75" cy="25" r="5" fill="#E67E22"/>
+                </svg>
+                <div class="logo-text">CIBOLA<br>INSIGHT<br>PARTNERS</div>
+            </div>
+            <div class="confidential-stamp">EYES ONLY // DATA DIV</div>
+        </div>
+
+        <h3>1. CUMULATIVE LEADERBOARD</h3>
+        <p><em>Combined scores from Launch Phase + Crisis Phase 2.</em></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="rank-col">RANK</th>
+                    <th>CANDIDATE</th>
+                    <th class="score-col">TOTAL</th>
+                    <th class="status-col">STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="rank-col">#1</td><td>VEGA</td><td class="score-col">338</td><td class="status-col">NEW LEADER (+2)</td></tr>
+                <tr><td class="rank-col">#2</td><td>KINCAID</td><td class="score-col">327</td><td class="status-col">HOLDING STEADY</td></tr>
+                <tr><td class="rank-col">#3</td><td>SPENCE</td><td class="score-col">326</td><td class="status-col">COMPETITIVE (+1)</td></tr>
+                <tr><td class="rank-col">#4</td><td>STRONGBOW</td><td class="score-col">325</td><td class="status-col">MAJOR SURGE (+1)</td></tr>
+                <tr><td class="rank-col">#5</td><td>THORNE</td><td class="score-col">318</td><td class="status-col">COLLAPSE (-4)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2. PHASE 2 PERFORMANCE SNAPSHOT</h3>
+        <p><em>Scores for Crisis Phase 2 ONLY.</em></p>
+
+        <div class="team-analysis" style="border: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <strong>STRONGBOW (Winner)</strong>
+                <strong>174 Points</strong>
+            </div>
+            <div class="bar-container"><div class="bar-fill innovation" style="width: 95%;">Innovation: 2.8</div></div>
+            <div class="bar-container"><div class="bar-fill adaptability" style="width: 95%;">Adaptability: 2.8</div></div>
+            <div class="bar-container"><div class="bar-fill impact" style="width: 90%;">Impact: 2.7</div></div>
+        </div>
+
+        <div class="team-analysis" style="border: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <strong>VEGA (Runner Up)</strong>
+                <strong>157 Points</strong>
+            </div>
+            <div class="bar-container"><div class="bar-fill innovation" style="width: 80%;">Innovation: 2.4</div></div>
+            <div class="bar-container"><div class="bar-fill adaptability" style="width: 88%;">Adaptability: 2.6</div></div>
+            <div class="bar-container"><div class="bar-fill impact" style="width: 83%;">Impact: 2.5</div></div>
+        </div>
+
+        <div class="team-analysis" style="border: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <strong>SPENCE</strong>
+                <strong>148 Points</strong>
+            </div>
+            <div class="bar-container"><div class="bar-fill innovation" style="width: 83%;">Innovation: 2.5</div></div>
+            <div class="bar-container"><div class="bar-fill adaptability" style="width: 83%;">Adaptability: 2.5</div></div>
+            <div class="bar-container"><div class="bar-fill impact" style="width: 80%;">Impact: 2.4</div></div>
+        </div>
+
+        <div class="team-analysis" style="border: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <strong>KINCAID</strong>
+                <strong>139 Points</strong>
+            </div>
+            <div class="bar-container"><div class="bar-fill innovation" style="width: 66%;">Innovation: 2.0</div></div>
+            <div class="bar-container"><div class="bar-fill adaptability" style="width: 80%;">Adaptability: 2.4</div></div>
+            <div class="bar-container"><div class="bar-fill impact" style="width: 73%;">Impact: 2.2</div></div>
+        </div>
+
+        <div class="team-analysis" style="border: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <strong>THORNE (Last)</strong>
+                <strong>124 Points</strong>
+            </div>
+            <div class="bar-container"><div class="bar-fill innovation" style="width: 60%;">Innovation: 1.8</div></div>
+            <div class="bar-container"><div class="bar-fill adaptability" style="width: 63%;">Adaptability: 1.9</div></div>
+            <div class="bar-container"><div class="bar-fill impact" style="width: 73%;">Impact: 2.2</div></div>
+        </div>
+
+        <div class="footer">
+            Page 2 of 2 | CIBOLA INSIGHT PARTNERS
+        </div>
+    </div>
+
+</body>
+</html>
