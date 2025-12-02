@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibola Insight Partners - Campaign Update</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Merriweather', serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .page {
+            background-color: white;
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Logo */
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .logo-sub {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        .confidential-stamp {
+            font-family: 'Inter', sans-serif;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 5px 10px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(-2deg);
+        }
+
+        /* Memo Meta Data */
+        .memo-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2c3e50;
+            padding-left: 15px;
+        }
+
+        .meta-row {
+            margin-bottom: 6px;
+        }
+
+        .meta-label {
+            font-weight: 700;
+            color: #7f8c8d;
+            width: 80px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        /* Content */
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: #ecf0f1;
+            padding: 8px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8e44ad; /* Purple for Politics/Election */
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+
+        .summary-box {
+            background-color: #f4ecf7; /* Light purple tint */
+            border: 1px solid #d2b4de;
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #5b2c6f;
+            margin-bottom: 20px;
+        }
+
+        /* Leaderboard Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .rank-col { width: 10%; font-weight: bold; }
+        .score-col { width: 15%; text-align: center; font-weight: bold; }
+        .status-col { width: 30%; font-weight: 600; color: #5b2c6f; }
+
+        /* Metric Breakdown Styling */
+        .metric-block {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .metric-header {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .metric-score {
+            color: #8e44ad;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 0.75in;
+            right: 0.75in;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            color: #95a5a6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-container">
+                <!-- SVG Logo -->
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="10" fill="#2C3E50"/>
+                    <path d="M25 75V50" stroke="#E67E22" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 75V35" stroke="#ECF0F1" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M75 75V25" stroke="#3498DB" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="75" cy="25" r="5" fill="#E67E22"/>
+                </svg>
+                <div>
+                    <div class="logo-text">CIBOLA<br>INSIGHT<br>PARTNERS</div>
+                </div>
+            </div>
+            <div class="confidential-stamp">INTERNAL / CONFIDENTIAL</div>
+        </div>
+
+        <!-- To/From Block -->
+        <div class="memo-meta">
+            <div class="meta-row"><span class="meta-label">TO:</span> All Senior Strategy Teams</div>
+            <div class="meta-row"><span class="meta-label">FROM:</span> Cibola Board of Elections (Simulation Control)</div>
+            <div class="meta-row"><span class="meta-label">DATE:</span> May 15, 2028</div>
+            <div class="meta-row"><span class="meta-label">SUBJECT:</span> <strong>PHASE 1 POLLING RESULTS & STATE OF THE RACE</strong></div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="summary-box">
+            EXECUTIVE SUMMARY: The initial launch phase has concluded. The electorate is responding to high-impact creative and innovative organizing models. Team Thorne has established an early lead based on strong overall performance, but Team Kincaid is surging on innovation. Team Vega remains a serious threat due to superior adaptability ratings.
+        </div>
+
+        <!-- Leaderboard Table -->
+        <h3>The Leaderboard (Total Points)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="rank-col">RANK</th>
+                    <th>CANDIDATE</th>
+                    <th class="score-col">SCORE</th>
+                    <th class="status-col">STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1</td>
+                    <td>THORNE</td>
+                    <td class="score-col">191</td>
+                    <td class="status-col">FRONT RUNNER</td>
+                </tr>
+                <tr>
+                    <td>#2</td>
+                    <td>KINCAID</td>
+                    <td class="score-col">185</td>
+                    <td class="status-col">STRONG CONTENDER</td>
+                </tr>
+                <tr>
+                    <td>#3</td>
+                    <td>VEGA</td>
+                    <td class="score-col">178</td>
+                    <td class="status-col">IN THE HUNT</td>
+                </tr>
+                <tr>
+                    <td>#4</td>
+                    <td>SPENCE</td>
+                    <td class="score-col">175</td>
+                    <td class="status-col">COMPETITIVE</td>
+                </tr>
+                <tr>
+                    <td>#5</td>
+                    <td>STRONGBOW</td>
+                    <td class="score-col">151</td>
+                    <td class="status-col">NEEDS A PIVOT</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Metric Breakdown -->
+        <h3>Metric Breakdown</h3>
+
+        <div class="metric-block">
+            <div class="metric-header">
+                <span>#1 THORNE (191 pts)</span>
+                <span class="metric-score">Top Metric: Impact (2.8)</span>
+            </div>
+            <div class="metric-detail">
+                <strong>Analysis:</strong> The frontrunner. Thorne tied for the highest Impact score and maintained consistent, high marks across Innovation and Adaptability (2.7). The campaign is connecting broadly and effectively.
+            </div>
+        </div>
+
+        <div class="metric-block">
+            <div class="metric-header">
+                <span>#2 KINCAID (185 pts)</span>
+                <span class="metric-score">Top Metric: Innovation (3.0) — <em>Highest in Field</em></span>
+            </div>
+            <div class="metric-detail">
+                <strong>Analysis:</strong> Kincaid is the "Idea Leader," securing the only 3.0 score in any category. While slightly lower on Adaptability (2.6), the creative approach is resonating deeply with the electorate.
+            </div>
+        </div>
+
+        <div class="metric-block">
+            <div class="metric-header">
+                <span>#3 VEGA (178 pts)</span>
+                <span class="metric-score">Top Metric: Adaptability (2.9) — <em>Highest in Field</em></span>
+            </div>
+            <div class="metric-detail">
+                <strong>Analysis:</strong> While Impact (2.5) was softer, Vega dominates on Adaptability. This suggests the campaign is structurally the most resilient and best positioned to handle the coming volatility in Phase 2.
+            </div>
+        </div>
+
+        <div class="metric-block">
+            <div class="metric-header">
+                <span>#4 SPENCE (175 pts)</span>
+                <span class="metric-score">Top Metric: Impact (2.7)</span>
+            </div>
+            <div class="metric-detail">
+                <strong>Analysis:</strong> A steady performance with tight clustering across all metrics (2.6–2.7). To break out of the middle of the pack, the campaign needs to take a bigger swing on Innovation.
+            </div>
+        </div>
+
+        <div class="metric-block">
+            <div class="metric-header">
+                <span>#5 STRONGBOW (151 pts)</span>
+                <span class="metric-score">Top Metric: Adaptability (2.4)</span>
+            </div>
+            <div class="metric-detail">
+                <strong>Analysis:</strong> Currently lagging significantly behind the field. With the lowest Impact (2.0) and Innovation (2.2) scores, the electorate is tuning this campaign out. A major tactical pivot is required immediately to remain viable.
+            </div>
+        </div>
+
+        <p style="margin-top: 25px; font-style: italic; border-left: 3px solid #8e44ad; padding-left: 10px;">
+            <strong>LOOKING AHEAD:</strong> As we move into Phase 2, the heat will rise. Adaptability scores will likely determine who survives the next shift. Team Vega has the structural advantage here, while Team Thorne and Team Kincaid must prove they can hold their lead when the environment turns hostile.
+        </p>
+
+        <!-- Footer -->
+        <div class="footer">
+            CIBOLA INSIGHT PARTNERS | 404 IRONWOOD AVE, SUITE 200, IRONWOOD, CB 99201 | CONFIDENTIAL CLIENT DATA DO NOT DISTRIBUTE
+        </div>
+    </div>
+
+</body>
+</html>
