@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibola Insight Partners - Confidential Memo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Merriweather', serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .page {
+            background-color: white;
+            width: 8.5in;
+            height: 11in;
+            padding: 0.75in;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Logo */
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .logo-sub {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        .confidential-stamp {
+            font-family: 'Inter', sans-serif;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 5px 10px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(-2deg);
+        }
+
+        /* Memo Meta Data */
+        .memo-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2c3e50;
+            padding-left: 15px;
+        }
+
+        .meta-row {
+            margin-bottom: 6px;
+        }
+
+        .meta-label {
+            font-weight: 700;
+            color: #7f8c8d;
+            width: 80px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        /* Content */
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: #ecf0f1;
+            padding: 8px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e67e22; /* Heat color */
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .summary-box {
+            background-color: #fff8f0;
+            border: 1px solid #fae5d3;
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 20px;
+        }
+
+        /* Charts */
+        .chart-container {
+            margin-bottom: 25px;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+        }
+
+        .chart-label {
+            width: 220px;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .bar-container {
+            flex-grow: 1;
+            background-color: #ecf0f1;
+            height: 18px;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .bar.heat { background-color: #d35400; } /* Orange/Red for Heat Issues */
+        .bar.neutral { background-color: #95a5a6; } /* Grey for low priorities */
+
+        .data-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #555;
+            background-color: #f7f9f9;
+            padding: 8px;
+            border-left: 3px solid #3498db;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 0.75in;
+            right: 0.75in;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            color: #95a5a6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-container">
+                <!-- SVG Logo -->
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="10" fill="#2C3E50"/>
+                    <path d="M25 75V50" stroke="#E67E22" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 75V35" stroke="#ECF0F1" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M75 75V25" stroke="#3498DB" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="75" cy="25" r="5" fill="#E67E22"/>
+                </svg>
+                <div>
+                    <div class="logo-text">CIBOLA<br>INSIGHT<br>PARTNERS</div>
+                </div>
+            </div>
+            <div class="confidential-stamp">INTERNAL / CONFIDENTIAL</div>
+        </div>
+
+        <!-- To/From Block -->
+        <div class="memo-meta">
+            <div class="meta-row"><span class="meta-label">TO:</span> Senior Strategy Team</div>
+            <div class="meta-row"><span class="meta-label">FROM:</span> Cibola Insight Partners (Data Division)</div>
+            <div class="meta-row"><span class="meta-label">DATE:</span> August 12, 2028</div>
+            <div class="meta-row"><span class="meta-label">SUBJECT:</span> <strong>TRACKING UPDATE: Voter Priorities During Heat Emergency</strong></div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="summary-box">
+            EXECUTIVE SUMMARY: The heat wave remains the dominant lens through which voters are viewing the election, but the mood is shifting from pure reaction to a demand for competence. While immediate relief is still the top priority, there is a surging hunger for long-term solutions. Voters aren't just scared; they are looking for a plan.
+        </div>
+
+        <!-- Chart 1 -->
+        <h3>1. "Which issues are top of mind for you this week?"</h3>
+        <p><em>(Respondents could select up to two options. N=800 Likely Voters)</em></p>
+        
+        <div class="chart-container">
+            <div class="chart-row">
+                <div class="chart-label">Grid Reliability & Heat</div>
+                <div class="bar-container">
+                    <div class="bar heat" style="width: 62%;">62%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Cost of Living / Energy</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 48%;">48%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Tech/AI Resource Usage</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 24%;">24%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Immigration / Border</div>
+                <div class="bar-container">
+                    <div class="bar neutral" style="width: 21%;">21%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Threats to Democracy</div>
+                <div class="bar-container">
+                    <div class="bar neutral" style="width: 15%;">15%</div>
+                </div>
+            </div>
+            <div class="data-note">
+                <strong>DATA NOTE:</strong> Concern regarding "AI Resource Usage" has stabilized. While still present, it is not the primary driver of anger compared to the immediate physical reality of the grid and the cost of cooling.
+            </div>
+        </div>
+
+        <!-- Chart 2 -->
+        <h3>2. "What should candidates prioritize right now?"</h3>
+        <p><em>(Forced Choice Question)</em></p>
+
+        <div class="chart-container">
+            <div class="chart-row">
+                <div class="chart-label">Direct Community Relief</div>
+                <div class="bar-container">
+                    <div class="bar heat" style="width: 46%;">46%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Detailed Policy Plans</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 42%;">42%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Debating Social Issues</div>
+                <div class="bar-container">
+                    <div class="bar neutral" style="width: 8%;">8%</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label">Attacking Opponent</div>
+                <div class="bar-container">
+                    <div class="bar neutral" style="width: 4%;">4%</div>
+                </div>
+            </div>
+            <div class="data-note">
+                <strong>KEY INSIGHT:</strong> We are seeing a statistically significant rise in demand for "Detailed Plans" (+10 points since last week). Voters want water <em>today</em>, but they want to know how you will fix the system for <em>tomorrow</em>. Meanwhile, traditional "Culture War" topics have become statistically irrelevant.
+            </div>
+        </div>
+
+        <p style="margin-top: 30px;"><strong>RECOMMENDATION:</strong> Campaigns should pivot creative spend immediately away from "Contrast/Attack" spots and toward "Service/Plan" content. The window for pure political engagement is currently closed.</p>
+
+        <!-- Footer -->
+        <div class="footer">
+            CIBOLA INSIGHT PARTNERS | 404 IRONWOOD AVE, SUITE 200, IRONWOOD, CB 99201 | CONFIDENTIAL CLIENT DATA DO NOT DISTRIBUTE
+        </div>
+    </div>
+
+</body>
+</html>
