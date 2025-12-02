@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2028 Senate Campaign Simulation - Data Projections</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .chart-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        canvas {
+            max-height: 400px;
+        }
+        .sources {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .sources h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .sources ul {
+            line-height: 1.8;
+            color: #555;
+        }
+        .sources a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        .projection-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .projection-note strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>2028 Senate Campaign Simulation</h1>
+    <p class="subtitle">Data Projections for Campaign Strategy Planning</p>
+
+    <div class="projection-note">
+        <strong>Note on Projections:</strong> All 2028 projections are based on aggressive but realistic extrapolations of 2020-2025 trends. These are simulation scenarios designed to help campaign strategists prepare for plausible future conditions.
+    </div>
+
+    <!-- Chart 1A: Social Media Usage - All Americans -->
+    <div class="chart-container">
+        <div class="chart-title">1A. Social Media Platform Usage - All Americans</div>
+        <div class="chart-description">
+            Percentage of all Americans using each social media platform. Shows historical data (2021-2025) and projected usage for 2028.
+            <br><strong>Note:</strong> "Badger" is a fictional new platform launched in 2026 that captures significant market share by 2028.
+        </div>
+        <canvas id="socialMediaAllChart"></canvas>
+    </div>
+
+    <!-- Chart 1B: Social Media Usage - Young Americans -->
+    <div class="chart-container">
+        <div class="chart-title">1B. Social Media Platform Usage - Ages 18-29</div>
+        <div class="chart-description">
+            Percentage of Americans ages 18-29 using each social media platform. Shows historical data (2021-2025) and projected usage for 2028.
+            <br><strong>Note:</strong> "Badger" is a fictional new platform launched in 2026, showing particularly strong adoption among younger users (35% by 2028).
+        </div>
+        <canvas id="socialMediaYoungChart"></canvas>
+    </div>
+
+    <!-- Chart 2: News Consumption Sources -->
+    <div class="chart-container">
+        <div class="chart-title">2. How Americans Consume News</div>
+        <div class="chart-description">
+            Primary sources Americans use to get news. Data shows the historic shift from television to social media and digital platforms.
+        </div>
+        <canvas id="newsConsumptionChart"></canvas>
+    </div>
+
+    <!-- Chart 3: Trust in Institutions -->
+    <div class="chart-container">
+        <div class="chart-title">3. Trust in Major Institutions</div>
+        <div class="chart-description">
+            Percentage of Americans who trust government, media, and tech companies "a great deal" or "a fair amount." Shows declining trust trends.
+        </div>
+        <canvas id="trustChart"></canvas>
+    </div>
+
+    <!-- Chart 4: AI Video Skepticism -->
+    <div class="chart-container">
+        <div class="chart-title">4. Skepticism About AI-Generated Video Content</div>
+        <div class="chart-description">
+            American attitudes toward AI-generated and deepfake video content, including concerns about authenticity and ability to distinguish real from fake.
+        </div>
+        <canvas id="aiSkepticismChart"></canvas>
+    </div>
+
+    <!-- Chart 5: AI Tool Usage Among Americans -->
+    <div class="chart-container">
+        <div class="chart-title">5. AI Tool Usage Among Americans</div>
+        <div class="chart-description">
+            Percentage of Americans who have used AI tools like ChatGPT. Shows overall population and age 18-29 breakdown, plus workplace usage trends.
+        </div>
+        <canvas id="aiUsageChart"></canvas>
+    </div>
+
+    <!-- Chart 6: AI and News/Information Consumption -->
+    <div class="chart-container">
+        <div class="chart-title">6. AI for News and Information Consumption</div>
+        <div class="chart-description">
+            How Americans are using AI to consume and process news and information, including summarization, chatbots, and research.
+        </div>
+        <canvas id="aiNewsChart"></canvas>
+    </div>
+
+    <div class="sources">
+        <h2>Data Sources</h2>
+        <ul>
+            <li><a href="https://www.pewresearch.org/internet/2025/11/20/americans-social-media-use-2025/" target="_blank">Pew Research Center - Americans' Social Media Use 2025</a></li>
+            <li><a href="https://www.pewresearch.org/internet/2024/01/31/americans-social-media-use/" target="_blank">Pew Research Center - How Americans Use Social Media (2024)</a></li>
+            <li><a href="https://www.pewresearch.org/internet/fact-sheet/social-media/" target="_blank">Pew Research Center - Social Media Fact Sheet</a></li>
+            <li><a href="https://www.pewresearch.org/journalism/fact-sheet/news-platform-fact-sheet/" target="_blank">Pew Research Center - News Platform Fact Sheet 2024</a></li>
+            <li><a href="https://www.niemanlab.org/2025/06/for-the-first-time-social-media-overtakes-tv-as-americans-top-news-source/" target="_blank">Nieman Lab - Social Media Overtakes TV as News Source</a></li>
+            <li><a href="https://news.gallup.com/poll/695762/trust-media-new-low.aspx" target="_blank">Gallup - Trust in Media at New Low of 28%</a></li>
+            <li><a href="https://news.gallup.com/poll/651977/americans-trust-media-remains-trend-low.aspx" target="_blank">Gallup - Americans' Trust in Media Remains at Trend Low</a></li>
+            <li><a href="https://today.yougov.com/politics/articles/52272-trust-in-media-2025-which-news-sources-americans-use-and-trust" target="_blank">YouGov - Trust in Media 2025</a></li>
+            <li><a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2025/gen-ai-trust-standards.html" target="_blank">Deloitte - Gen AI Trust Standards</a></li>
+            <li><a href="https://thehill.com/policy/technology/5253632-americans-trust-artificial-intelligence-survey/" target="_blank">The Hill - Americans' Trust in AI-Generated Information</a></li>
+            <li><a href="https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/" target="_blank">Pew Research Center - ChatGPT Usage Doubled Since 2023</a></li>
+            <li><a href="https://www.pewresearch.org/short-reads/2025/10/06/about-1-in-5-us-workers-now-use-ai-in-their-job-up-since-last-year/" target="_blank">Pew Research Center - AI at Work</a></li>
+            <li><a href="https://www.surveymonkey.com/curiosity/ai-trends-by-generations/" target="_blank">SurveyMonkey - AI Trends by Generation</a></li>
+            <li><a href="https://www.pewresearch.org/short-reads/2025/10/01/relatively-few-americans-are-getting-news-from-ai-chatbots-like-chatgpt/" target="_blank">Pew Research Center - AI Chatbots for News</a></li>
+            <li><a href="https://www.gallup.com/workplace/691643/work-nearly-doubled-two-years.aspx" target="_blank">Gallup - AI Use at Work Has Nearly Doubled</a></li>
+            <li><a href="https://www.pewresearch.org/short-reads/2024/09/19/concern-over-the-impact-of-ai-on-2024-presidential-campaign/" target="_blank">Pew Research Center - Concern Over AI in Elections</a></li>
+        </ul>
+        <p style="margin-top: 20px; color: #666; font-size: 14px;">
+            All projections for 2028 are analytical estimates based on observed trends from 2020-2025 and are intended for simulation purposes only.
+        </p>
+    </div>
+
+    <script>
+        // Chart 1A: Social Media Platform Usage - All Americans
+        const socialMediaAllCtx = document.getElementById('socialMediaAllChart').getContext('2d');
+        new Chart(socialMediaAllCtx, {
+            type: 'line',
+            data: {
+                labels: ['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'YouTube',
+                        data: [81, 82, 83, 83, 84, 85, 85, 86],
+                        borderColor: '#FF0000',
+                        backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Facebook',
+                        data: [69, 69, 68, 68, 71, 70, 69, 68],
+                        borderColor: '#1877F2',
+                        backgroundColor: 'rgba(24, 119, 242, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Instagram',
+                        data: [40, 42, 45, 47, 50, 52, 54, 56],
+                        borderColor: '#E4405F',
+                        backgroundColor: 'rgba(228, 64, 95, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'TikTok',
+                        data: [21, 25, 30, 33, 37, 41, 44, 48],
+                        borderColor: '#000000',
+                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'X/Twitter',
+                        data: [23, 23, 22, 20, 19, 17, 16, 15],
+                        borderColor: '#1DA1F2',
+                        backgroundColor: 'rgba(29, 161, 242, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Badger (launched 2026)',
+                        data: [null, null, null, null, null, 3, 10, 18],
+                        borderColor: '#F97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        borderDash: [10, 5]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage of Users (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 1B: Social Media Platform Usage - Ages 18-29
+        const socialMediaYoungCtx = document.getElementById('socialMediaYoungChart').getContext('2d');
+        new Chart(socialMediaYoungCtx, {
+            type: 'line',
+            data: {
+                labels: ['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'YouTube',
+                        data: [90, 91, 92, 93, 93, 94, 94, 95],
+                        borderColor: '#FF0000',
+                        backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Instagram',
+                        data: [71, 75, 78, 80, 80, 81, 82, 84],
+                        borderColor: '#E4405F',
+                        backgroundColor: 'rgba(228, 64, 95, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'TikTok',
+                        data: [48, 55, 62, 67, 72, 76, 79, 82],
+                        borderColor: '#000000',
+                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Facebook',
+                        data: [70, 68, 65, 62, 60, 57, 54, 52],
+                        borderColor: '#1877F2',
+                        backgroundColor: 'rgba(24, 119, 242, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'X/Twitter',
+                        data: [42, 40, 38, 35, 32, 29, 26, 24],
+                        borderColor: '#1DA1F2',
+                        backgroundColor: 'rgba(29, 161, 242, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Badger (launched 2026)',
+                        data: [null, null, null, null, null, 10, 22, 35],
+                        borderColor: '#F97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        borderDash: [10, 5]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage of Users (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: News Consumption Sources
+        const newsCtx = document.getElementById('newsConsumptionChart').getContext('2d');
+        new Chart(newsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2020', '2022', '2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'Social Media',
+                        data: [43, 46, 48, 52, 54, 57, 59, 62],
+                        borderColor: '#8B5CF6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Television',
+                        data: [58, 56, 53, 50, 50, 47, 44, 42],
+                        borderColor: '#EF4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Digital Devices (often)',
+                        data: [45, 48, 52, 56, 57, 60, 62, 65],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'News Websites/Apps',
+                        data: [28, 26, 24, 22, 21, 20, 19, 18],
+                        borderColor: '#F59E0B',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Print Newspapers',
+                        data: [16, 12, 9, 7, 7, 6, 5, 4],
+                        borderColor: '#6B7280',
+                        backgroundColor: 'rgba(107, 114, 128, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage Using Source (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Trust in Institutions
+        const trustCtx = document.getElementById('trustChart').getContext('2d');
+        new Chart(trustCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'Trust in Media',
+                        data: [40, 36, 34, 32, 31, 28, 26, 24, 22],
+                        borderColor: '#DC2626',
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Trust in Government',
+                        data: [42, 40, 38, 36, 35, 33, 31, 29, 28],
+                        borderColor: '#2563EB',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Trust in Tech Companies',
+                        data: [48, 46, 42, 38, 36, 34, 32, 30, 28],
+                        borderColor: '#7C3AED',
+                        backgroundColor: 'rgba(124, 58, 237, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Trust in Government to Regulate AI',
+                        data: [null, null, null, 48, 46, 44, 42, 40, 38],
+                        borderColor: '#059669',
+                        backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderDash: [5, 5],
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage Trusting Institution (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 4: AI Video Skepticism
+        const aiCtx = document.getElementById('aiSkepticismChart').getContext('2d');
+        new Chart(aiCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Concerned About\nDeepfakes',
+                    'Hard Time\nDistinguishing AI',
+                    'Distrust AI-Generated\nInfo',
+                    'Concerned About AI\nin Elections',
+                    'Feel Skeptical\nWhen Seeing Deepfakes'
+                ],
+                datasets: [
+                    {
+                        label: '2024',
+                        data: [85, 59, 75, 75, 43],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: '#3B82F6',
+                        borderWidth: 2,
+                        hoverBackgroundColor: 'rgba(59, 130, 246, 0.9)',
+                        hoverBorderWidth: 3
+                    },
+                    {
+                        label: '2025',
+                        data: [87, 64, 78, 78, 52],
+                        backgroundColor: 'rgba(139, 92, 246, 0.7)',
+                        borderColor: '#8B5CF6',
+                        borderWidth: 2,
+                        hoverBackgroundColor: 'rgba(139, 92, 246, 0.9)',
+                        hoverBorderWidth: 3
+                    },
+                    {
+                        label: '2026',
+                        data: [89, 68, 80, 81, 58],
+                        backgroundColor: 'rgba(168, 85, 247, 0.7)',
+                        borderColor: '#A855F7',
+                        borderWidth: 2,
+                        hoverBackgroundColor: 'rgba(168, 85, 247, 0.9)',
+                        hoverBorderWidth: 3
+                    },
+                    {
+                        label: '2027',
+                        data: [90, 71, 82, 83, 63],
+                        backgroundColor: 'rgba(251, 146, 60, 0.7)',
+                        borderColor: '#FB923C',
+                        borderWidth: 2,
+                        hoverBackgroundColor: 'rgba(251, 146, 60, 0.9)',
+                        hoverBorderWidth: 3
+                    },
+                    {
+                        label: '2028',
+                        data: [92, 74, 84, 85, 68],
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                        borderColor: '#EF4444',
+                        borderWidth: 2,
+                        hoverBackgroundColor: 'rgba(239, 68, 68, 0.9)',
+                        hoverBorderWidth: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 13
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label.replace(/\n/g, ' ');
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage of Americans (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 5: AI Tool Usage Among Americans
+        const aiUsageCtx = document.getElementById('aiUsageChart').getContext('2d');
+        new Chart(aiUsageCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'All Americans - Ever Used AI',
+                        data: [18, 34, 45, 68, 82, 88],
+                        borderColor: '#8B5CF6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Ages 18-29 - Ever Used AI',
+                        data: [33, 43, 58, 78, 90, 95],
+                        borderColor: '#EC4899',
+                        backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Workplace Usage',
+                        data: [8, 20, 21, 42, 58, 68],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        borderDash: [5, 5]
+                    },
+                    {
+                        label: 'Daily/Regular Users (All Americans)',
+                        data: [5, 12, 18, 38, 52, 65],
+                        borderColor: '#F59E0B',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        borderDash: [5, 5]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage of Americans (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 6: AI and News/Information Consumption
+        const aiNewsCtx = document.getElementById('aiNewsChart').getContext('2d');
+        new Chart(aiNewsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'Use AI to Summarize News/Articles',
+                        data: [27, 32, 52, 68, 78],
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Use AI to Recommend Articles',
+                        data: [21, 26, 44, 60, 72],
+                        borderColor: '#8B5CF6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Use AI to Translate News',
+                        data: [24, 28, 42, 56, 68],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Get News from AI Chatbots',
+                        data: [8, 12, 28, 48, 62],
+                        borderColor: '#F59E0B',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Use AI to Research Political Info',
+                        data: [12, 16, 34, 52, 65],
+                        borderColor: '#EF4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        borderDash: [5, 5]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'point',
+                    intersect: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'point',
+                        intersect: true,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentage of Americans (%)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
